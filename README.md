@@ -12,9 +12,11 @@ Then change into the employee-entry-form-web-app folder:
 
 Now, we will need to create a virtual environment and install all the dependencies:
 
-python3 -m venv venv       # on Windows, use "python -m venv venv" instead
-source venv/bin/activate   # on Windows, use "venv\Scripts\activate" instead
-pip install -r requirements.txt
+    python3 -m venv venv       # on Windows, use "python -m venv venv" instead
+
+    source venv/bin/activate   # on Windows, use "venv\Scripts\activate" instead
+    
+    pip install -r requirements.txt
 
 # Run Unit tests
 
