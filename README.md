@@ -1,6 +1,8 @@
 # employee-entry-form-web-app
 This is a web app built with Flask.
 
+![alt text](image.png)
+
 # Installation
 First, you need to clone this repository:
 
