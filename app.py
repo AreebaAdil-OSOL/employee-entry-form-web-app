@@ -3,13 +3,14 @@ import mysql.connector
 
 app = Flask(__name__)
 
-# Configure MySQL connection
+# Configure MySQL connection using environment variables
 db = mysql.connector.connect(
-    host="ip Address",
-    user="username",
-    password="password",
-    database="dbname"
+    host=os.getenv('DB_HOST'),  
+    user=os.getenv('DB_USER'),  
+    password=os.getenv('DB_PASSWORD'),  
+    database=os.getenv('DB_NAME')  
 )
+
 
 cursor = db.cursor()
 
