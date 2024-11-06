@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Entry Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Employee Entry Form</h2>
+        <form action="{{ url_for('submit_form') }}" method="POST">
+            <label for="empID">Employee ID:</label>
+            <input type="text" id="empID" name="employee_id" required>
+
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="first_name" required>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="last_name" required>
+
+            <label for="department">Department:</label>
+            <select id="department" name="department" required>
+                <option value="HR">HR</option>
+                <option value="Finance">Finance</option>
+                <option value="IT">IT</option>
+                <option value="Marketing">Marketing</option>
+                <option value="DevOps">DevOps</option>
+                <option value="Custom App">Custom App</option>
+            </select>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="dateOfJoining">Date of Joining:</label>
+            <input type="date" id="dateOfJoining" name="date_of_joining" required>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
