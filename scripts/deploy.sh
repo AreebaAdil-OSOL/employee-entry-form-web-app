@@ -21,10 +21,10 @@ APP_MODULE="app:app"  # Adjust this if your app module is named differently
 cd ${APP_DIR} || exit
 
 # Delete and recreate the virtual environment
-#if [ -d "${VENV_DIR}" ]; then
- #   echo "Removing existing virtual environment..."
- #   rm -rf ${VENV_DIR}
-#fi
+if [ -d "${VENV_DIR}" ]; then
+    echo "Removing existing virtual environment..."
+    rm -rf ${VENV_DIR}
+fi
 
 # Create a new virtual environment
 echo "Creating a new virtual environment..."
