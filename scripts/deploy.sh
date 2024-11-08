@@ -13,23 +13,18 @@ GUNICORN_WORKERS="3"
 USER="ec2-user"
 GROUP="webapps"
 APP_MODULE="app:app"  # Adjust this if your app module is named differently
-REMOTE_DIR="/home/jenkins/jenkins-agent/workspace/dev-EmployeeEntryFormBuildDeploy/"
-REMOTE_KEY="/var/lib/jenkins/.ssh/dev-employee-entryfrom-web-python.pem"
-REMOTE_IP="54.179.191.156"
-
-# Rsync to copy the application code from Jenkins to EC2
-echo "Syncing application files from Jenkins workspace..."
-#rsync -avzu --delete -e "ssh -i ${REMOTE_KEY}" ${REMOTE_DIR} ec2-user@${REMOTE_IP}:${APP_DIR}
-#rsync -avzu --delete -e "ssh -i /home/jenkins/jenkins-agent/dev-employee-entryfrom-web-python.pem" /home/jenkins/jenkins-agent/workspace/dev-EmployeeEntryFormBuildDeploy/ ec2-user@54.179.191.156:/home/ec2-user/employee-entry-form-web-app
+#REMOTE_DIR="/home/jenkins/jenkins-agent/workspace/dev-EmployeeEntryFormBuildDeploy/"
+#REMOTE_KEY="/var/lib/jenkins/.ssh/dev-employee-entryfrom-web-python.pem"
+#REMOTE_IP="54.179.191.156"
 
 # Navigate to the application directory
 cd ${APP_DIR} || exit
 
 # Delete and recreate the virtual environment
-if [ -d "${VENV_DIR}" ]; then
-    echo "Removing existing virtual environment..."
-    rm -rf ${VENV_DIR}
-fi
+#if [ -d "${VENV_DIR}" ]; then
+ #   echo "Removing existing virtual environment..."
+ #   rm -rf ${VENV_DIR}
+#fi
 
 # Create a new virtual environment
 echo "Creating a new virtual environment..."
@@ -37,7 +32,11 @@ python3 -m venv ${VENV_DIR} || { echo "Failed to create virtual environment"; ex
 
 # Activate the virtual environment
 echo "Activating virtual environment..."
-source ${VENV_DIR}/bin/activate || { echo "Failed to activate virtual environment"; exit 1; }
+#source ${VENV_DIR}/bin/activate || { echo "Failed to activate virtual environment"; exit 1; }
+# Create a virtual environment if it doesn't exist
+if [ ! -d ${VENV_DIR} ]; then
+    python3 -m ${VENV_DIR} ${VENV_DIR}
+fi
 
 # Upgrade pip to the latest version
 pip install --upgrade pip
