@@ -13,18 +13,18 @@ GUNICORN_WORKERS="3"
 USER="ec2-user"
 GROUP="webapps"
 APP_MODULE="app:app"  # Adjust this if your app module is named differently
-REMOTE_DIR="/home/jenkins/jenkins-agent/workspace/dev-EmployeeEntryFormBuildDeploy/"
-REMOTE_KEY="/var/lib/jenkins/.ssh/dev-employee-entryfrom-web-python.pem"
-REMOTE_IP="54.179.191.156"
+#REMOTE_DIR="/home/jenkins/jenkins-agent/workspace/dev-EmployeeEntryFormBuildDeploy/"
+#REMOTE_KEY="/var/lib/jenkins/.ssh/dev-employee-entryfrom-web-python.pem"
+#REMOTE_IP="54.179.191.156"
 
 # Navigate to the application directory
 cd ${APP_DIR} || exit
 
 # Delete and recreate the virtual environment
-#if [ -d "${VENV_DIR}" ]; then
-#    echo "Removing existing virtual environment..."
-#    rm -rf ${VENV_DIR}
-#fi
+if [ -d "${VENV_DIR}" ]; then
+    echo "Removing existing virtual environment..."
+    rm -rf ${VENV_DIR}
+fi
 
 # Create a new virtual environment
 echo "If not found creating a new virtual environment..."
