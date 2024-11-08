@@ -19,7 +19,8 @@ REMOTE_IP="54.179.191.156"
 
 # Rsync to copy the application code from Jenkins to EC2
 echo "Syncing application files from Jenkins workspace..."
-rsync -avzu --delete -e "ssh -i ${REMOTE_KEY}" ${REMOTE_DIR} ec2-user@${REMOTE_IP}:${APP_DIR}
+#rsync -avzu --delete -e "ssh -i ${REMOTE_KEY}" ${REMOTE_DIR} ec2-user@${REMOTE_IP}:${APP_DIR}
+rsync -avzu --delete -e "ssh -i /home/jenkins/jenkins-agent/dev-employee-entryfrom-web-python.pem" /home/jenkins/jenkins-agent/workspace/dev-EmployeeEntryFormBuildDeploy/ ec2-user@54.179.191.156:/home/ec2-user/employee-entry-form-web-app
 
 # Navigate to the application directory
 cd ${APP_DIR} || exit
